@@ -1,0 +1,10 @@
+test_script:
+- ps: $sh_mapping = (cmd /c ftype sh_auto_file)
+- ps: if ($sh_mapping -ne 'sh_auto_file=C:\msys64\usr\bin\bash.exe %L %*') { throw ".sh mapping is not set."; }
+- ps: $sh_mapping
+- echo echo "Hello, world!" > %temp%\test.sh
+- ps: $sh_result = (cmd /c $env:temp\test.sh)
+- ps: $sh_result
+- ps: if ($sh_result -ne 'Hello, world!') { throw "Error running .sh script."; }
+
+build: off
