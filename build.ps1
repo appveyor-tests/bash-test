@@ -5,6 +5,7 @@ cmd /c echo echo "Hello, world!" > $env:temp\test.sh
 Write-Host "test.sh content: "
 Get-Content -Path $env:temp\test.sh
 #try running test.sh
+Write-Host "Run bash script test.sh: "
 cmd /c $env:temp\test.sh
 $sh_result = (echo cmd /c $env:temp\test.sh)
 $sh_result
